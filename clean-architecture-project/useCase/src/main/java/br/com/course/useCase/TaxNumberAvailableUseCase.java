@@ -1,5 +1,5 @@
 package br.com.course.useCase;
 
 public interface TaxNumberAvailableUseCase {
-    Boolean TaxNumberAvailable(String taxNumber);
+    Boolean taxNumberAvailable(String taxNumber);
 }
