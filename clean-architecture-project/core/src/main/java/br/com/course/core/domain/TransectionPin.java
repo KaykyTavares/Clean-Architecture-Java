@@ -24,11 +24,11 @@ public class TransectionPin {
         this.updatedAt = updatedAt;
     }
 
-    public TransectionPin(User user, String pin, Boolean blocked, Integer attempt) {
+    public TransectionPin(User user, String pin) throws TransectionPinException {
         this.user = user;
-        this.pin = pin;
-        this.blocked = blocked;
-        this.attempt = attempt;
+        setPin(pin);
+        this.attempt = 3;
+        this.blocked = false;
         this.createdAt = LocalDateTime.now();
     }
 
