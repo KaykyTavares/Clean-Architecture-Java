@@ -17,14 +17,14 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private EmailAvailableUseCase emailAvailableUseCase;
     private CreateUserGateway createUserGateway;
     private CreateWalletUseCase createWalletUseCase;
-    private CreateTransectionPinUseCase createTransectionPinUseCase;
+    private CreateTransactionPinUseCase createTransactionPinUseCase;
 
-    public CreateUserUseCaseImpl(TaxNumberAvailableUseCase taxNumberAvailableUseCase, EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway, CreateWalletUseCase createWalletUseCase, CreateTransectionPinUseCase createTransectionPinUseCase) {
+    public CreateUserUseCaseImpl(TaxNumberAvailableUseCase taxNumberAvailableUseCase, EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway, CreateWalletUseCase createWalletUseCase, CreateTransactionPinUseCase createTransactionPinUseCase) {
         this.taxNumberAvailableUseCase = taxNumberAvailableUseCase;
         this.emailAvailableUseCase = emailAvailableUseCase;
         this.createUserGateway = createUserGateway;
         this.createWalletUseCase = createWalletUseCase;
-        this.createTransectionPinUseCase = createTransectionPinUseCase;
+        this.createTransactionPinUseCase = createTransactionPinUseCase;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
         User createdUser = createUserGateway.create(user);
 
         createWalletUseCase.create(new Wallet(BigDecimal.ZERO, createdUser));
-        createTransectionPinUseCase.create(new TransectionPin(createdUser, pin));
+        createTransactionPinUseCase.create(new TransectionPin(createdUser, pin));
     }
 }
 
