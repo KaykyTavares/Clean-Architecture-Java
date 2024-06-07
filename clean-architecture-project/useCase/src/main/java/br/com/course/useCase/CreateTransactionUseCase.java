@@ -1,7 +1,7 @@
 package br.com.course.useCase;
 
-import br.com.course.core.domain.Transection;
+import br.com.course.core.domain.Transaction;
 
 public interface CreateTransactionUseCase {
-    void create(Transection transection);
+    Transaction create(Transaction transaction);
 }

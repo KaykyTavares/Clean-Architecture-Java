@@ -1,7 +1,7 @@
 package br.com.course.useCase;
 
-import br.com.course.core.domain.Transection;
+import br.com.course.core.domain.Transaction;
 
 public interface UserNotificationUseCase {
-    Boolean notificate(Transection transection, String email);
+    Boolean notificate(Transaction transaction, String email);
 }

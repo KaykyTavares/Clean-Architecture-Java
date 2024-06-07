@@ -1,21 +1,21 @@
 package br.com.course.core.domain;
 
-import br.com.course.core.domain.enums.TransectionStatusEnum;
+import br.com.course.core.domain.enums.TransactionStatusEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Transection {
+public class Transaction {
     private Long id;
     private Wallet fromWallet;
     private Wallet toWallet;
     private BigDecimal value;
-    private TransectionStatusEnum status;
+    private TransactionStatusEnum status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Transection(Long id, Wallet fromWallet, Wallet toWallet, BigDecimal value, TransectionStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Transaction(Long id, Wallet fromWallet, Wallet toWallet, BigDecimal value, TransactionStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.fromWallet = fromWallet;
         this.toWallet = toWallet;
@@ -25,15 +25,15 @@ public class Transection {
         this.updatedAt = updatedAt;
     }
 
-    public Transection(Wallet fromWallet, Wallet toWallet, BigDecimal value) {
+    public Transaction(Wallet fromWallet, Wallet toWallet, BigDecimal value) {
         this.fromWallet = fromWallet;
         this.toWallet = toWallet;
         this.value = value;
-        this.status = TransectionStatusEnum.CREATED;
+        this.status = TransactionStatusEnum.CREATED;
         this.createdAt = LocalDateTime.now();
     }
 
-    public Transection() {}
+    public Transaction() {}
 
     public Long getId() {
         return id;
@@ -67,11 +67,11 @@ public class Transection {
         this.value = value;
     }
 
-    public TransectionStatusEnum getStatus() {
+    public TransactionStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(TransectionStatusEnum status) {
+    public void setStatus(TransactionStatusEnum status) {
         this.status = status;
     }
 
@@ -92,7 +92,7 @@ public class Transection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Transection that = (Transection) o;
+        Transaction that = (Transaction) o;
         return Objects.equals(getId(), that.getId()) && getFromWallet().equals(that.getFromWallet()) && getToWallet().equals(that.getToWallet()) && getValue().equals(that.getValue()) && getStatus() == that.getStatus() && getCreatedAt().equals(that.getCreatedAt()) && Objects.equals(getUpdatedAt(), that.getUpdatedAt());
     }
 

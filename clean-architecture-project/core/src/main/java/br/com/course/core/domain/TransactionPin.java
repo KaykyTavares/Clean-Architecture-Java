@@ -1,11 +1,11 @@
 package br.com.course.core.domain;
 
-import br.com.course.core.exception.TransectionPinException;
+import br.com.course.core.exception.TransactionPinException;
 import br.com.course.core.exception.enums.ErrorCodeEnum;
 
 import java.time.LocalDateTime;
 
-public class TransectionPin {
+public class TransactionPin {
     private Long id;
     private User user;
     private String pin;
@@ -14,7 +14,7 @@ public class TransectionPin {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public TransectionPin(Long id, User user, String pin, Integer attempt, Boolean blocked, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public TransactionPin(Long id, User user, String pin, Integer attempt, Boolean blocked, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.user = user;
         this.pin = pin;
@@ -24,7 +24,7 @@ public class TransectionPin {
         this.updatedAt = updatedAt;
     }
 
-    public TransectionPin(User user, String pin) throws TransectionPinException {
+    public TransactionPin(User user, String pin) throws TransactionPinException {
         this.user = user;
         setPin(pin);
         this.attempt = 3;
@@ -32,7 +32,7 @@ public class TransectionPin {
         this.createdAt = LocalDateTime.now();
     }
 
-    public TransectionPin() {
+    public TransactionPin() {
     }
 
     public Long getId() {
@@ -55,14 +55,14 @@ public class TransectionPin {
         return pin;
     }
 
-    public void setPin(String pin) throws TransectionPinException {
+    public void setPin(String pin) throws TransactionPinException {
         pinIsValid(pin);
         this.pin = pin;
     }
 
-    private void pinIsValid(String pin) throws TransectionPinException {
+    private void pinIsValid(String pin) throws TransactionPinException {
         if (pin.length() != 8) {
-            throw new TransectionPinException(ErrorCodeEnum.TRP0001.getMessage(),  ErrorCodeEnum.TRP0001.getCode());
+            throw new TransactionPinException(ErrorCodeEnum.TRP0001.getMessage(),  ErrorCodeEnum.TRP0001.getCode());
         }
     }
 
